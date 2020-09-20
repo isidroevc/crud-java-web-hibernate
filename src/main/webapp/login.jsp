@@ -4,11 +4,11 @@
 <%@ page import="com.isidroevc.hibernate.repository.LeadRepository"%>
 <%@ page import="com.isidroevc.hibernate.entity.Lead"%>
 <%@ page import="com.isidroevc.artifacts.IAuthenticator"%>
-<%@ page import="com.isidroevc.artifacts.CookieAuthenticator"%>
+<%@ page import="com.isidroevc.artifacts.HttpSessionAuthenticator"%>
 
 <%
-IAuthenticator authenticator = new CookieAuthenticator();
-if (authenticator.hasAccess(request)) {
+IAuthenticator authenticator = new HttpSessionAuthenticator();
+if (authenticator.hasAccess(request, response)) {
   response.sendRedirect("http://localhost:8080/crud-web/");
 }
 
