@@ -14,7 +14,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.current_session_context_class">thread</property>
 
-        <mapping class="com.isidroevc.hibernate.entity.Lead" />
+        <mapping class="com.isidroevc.hibernate.entity.Alumno" />
         <mapping class="com.isidroevc.hibernate.entity.User" />
     </session-factory>
 </hibernate-configuration>

@@ -1,27 +1,27 @@
 package com.isidroevc.hibernate.repository;
 
 import com.isidroevc.hibernate.repository.CommonRepository;
-import com.isidroevc.hibernate.entity.Lead;
+import com.isidroevc.hibernate.entity.Alumno;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
 import java.util.List;
 
-public class LeadRepository extends CommonRepository implements ILeadRepository {
+public class AlumnoRepository extends CommonRepository implements IAlumnoRepository {
 
     @Override
-    public long createLead(Lead lead) throws HibernateException {
-        return super.saveEntity(lead);
+    public Long createAlumno(Alumno alumno) throws HibernateException {
+        return super.saveEntity(alumno);
     }
 
     @Override
-    public Lead getLead(long id) throws HibernateException {
+    public Alumno getAlumno(long id) throws HibernateException {
         Session session = this.sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
         try {
-            Lead lead = (Lead)session.get(Lead.class, new Long(id));
+            Alumno alumno = (Alumno)session.get(Alumno.class, id);
             transaction.commit();
-            return lead;
+            return alumno;
         }catch (Exception ex) {
             transaction.rollback();
             throw ex;
@@ -31,11 +31,11 @@ public class LeadRepository extends CommonRepository implements ILeadRepository 
     }
 
     @Override
-    public List<Lead> listAllLeads() throws HibernateException {
+    public List<Alumno> listAllAlumnos() throws HibernateException {
         Session session = this.sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
         try {
-            List<Lead> leads = session.createCriteria(Lead.class).list();
+            List<Alumno> leads = session.createCriteria(Alumno.class).list();
             transaction.commit();
             return leads;
         }catch (Exception ex) {
@@ -46,16 +46,15 @@ public class LeadRepository extends CommonRepository implements ILeadRepository 
         } 
     }
 
-    public void deleteLead(long id) {
+    public void deleteAlumno(Long id) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            Lead lead = (Lead)session.get(Lead.class, new Long(id));
-            if (lead == null) {
+            Alumno alumno = (Alumno)session.get(Alumno.class, id);
+            if (alumno == null) {
                 return;
             }
-            System.out.println(lead.getFirstName());
-            session.remove(lead);
+            session.remove(alumno);
             transaction.commit();
         }catch (Exception ex) {
             transaction.rollback();
@@ -65,11 +64,11 @@ public class LeadRepository extends CommonRepository implements ILeadRepository 
         }      
     }
 
-    public void updateLead(Lead lead) {
+    public void updateAlumno(Alumno alumno) {
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.update(lead);
+            session.update(alumno);
             transaction.commit();
         }catch (Exception ex) {
             transaction.rollback();

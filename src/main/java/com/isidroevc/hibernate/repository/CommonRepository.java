@@ -14,7 +14,7 @@ public class CommonRepository {
         this.sessionFactory = HibernateConfig.getSessionFactory();
     }
 
-    protected long saveEntity(Object obj) throws HibernateException {
+    protected Long saveEntity(Object obj) throws HibernateException {
         Session session  = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {

@@ -30,7 +30,7 @@ public class User {
     }
 
     public void setId(long id) {
-        this.id = new Long(id);
+        this.id = id;
     }
 
     public String getUsername() {

@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List"%>
-<%@ page import="com.isidroevc.hibernate.repository.LeadRepository"%>
-<%@ page import="com.isidroevc.hibernate.entity.Lead"%>
+<%@ page import="com.isidroevc.hibernate.repository.AlumnoRepository"%>
+<%@ page import="com.isidroevc.hibernate.entity.Alumno"%>
 <%@ page import="com.isidroevc.artifacts.IAuthenticator"%>
 <%@ page import="com.isidroevc.artifacts.HttpSessionAuthenticator"%>
 
 <%
 IAuthenticator authenticator = new HttpSessionAuthenticator();
 if (authenticator.hasAccess(request, response)) {
-  response.sendRedirect("http://localhost:8080/crud-web/");
+  response.sendRedirect("http://localhost:8080/crud-java-web-hibernate/");
 }
 
 
